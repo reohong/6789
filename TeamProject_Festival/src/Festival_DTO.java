@@ -7,7 +7,7 @@ public class Festival_DTO {
 	private String festTheme;
 	private String festMinmember;
 	private String festWho;
-	private String dd;
+	
 	
 	public Festival_DTO(String festName, String festDate, String festPlace, String festTheme, String festMinmember,
 			String festWho) {
