@@ -1,11 +1,15 @@
+package Place_FestivalGUI;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class Festival_DAO {
+public class place_DAO {
 	
+
 	Connection conn = null;
 	PreparedStatement psmt =null;
 	ResultSet rs = null;
@@ -50,29 +54,33 @@ public class Festival_DAO {
 			}
 	}
 	
-	public int joinFest(String festName,String festDate,String festPlace,String festTheme,String festMinmember,String festWho) {
-		int cnt =0;
+	public ArrayList<place_DTO> selectPlace(String where) {
 		getConnect();
-		String sql = "insert into JoinFest values(?,?,?,?,?,?)";
+		String sql = "select * from place where gegu=?";
+		ArrayList<place_DTO> memberList = new ArrayList<place_DTO>();
 		try {
-			psmt= conn.prepareStatement(sql);
-			psmt.setString(1, festName);
-			psmt.setString(2, festDate);
-			psmt.setString(3, festPlace);
-			psmt.setString(4, festTheme);
-			psmt.setString(5, festMinmember);
-			psmt.setString(6, festWho);
-			cnt = psmt.executeUpdate();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, where);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				int num= rs.getInt(1);
+				String gegu = rs.getString(2);
+				String name = rs.getString(3);
+				String address = rs.getString(4);
+				memberList.add(new place_DTO(num,gegu,name,address));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
-		}
-		return cnt;
-	}
+		} return memberList;
 	
 	
+		
+		
+		
+	} 
 	
 	
 	
