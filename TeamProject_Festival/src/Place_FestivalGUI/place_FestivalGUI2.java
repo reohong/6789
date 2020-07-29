@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTextPane;
 
 public class place_FestivalGUI2  {
 
@@ -21,6 +24,8 @@ public class place_FestivalGUI2  {
 	private JButton btnNewButton;
 	private JLabel lblNewLabel;
 	private JButton button;
+	private JLabel lblNewLabel_1;
+	private JTextPane tp_search;
 	
 	/**
 	 * Launch the application.
@@ -58,7 +63,7 @@ public class place_FestivalGUI2  {
 		scrollPane.setBounds(0, 72, 476, 336);
 		frame.getContentPane().add(scrollPane);
 		
-		String [] colName = {"NUM", "GEGU","Name","Address"};
+		String [] colName = {"번호", "지역구","업체명","업체주소"};
 		
 		place_DAO dao = new place_DAO();
 		place_FestivalGUI festgui = new place_FestivalGUI();
@@ -75,13 +80,14 @@ public class place_FestivalGUI2  {
 		table = new JTable(data,colName);
 		scrollPane.setViewportView(table);
 		
+		
 		btnNewButton = new JButton("\uB2EB\uAE30");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(279, 435, 185, 52);
+		btnNewButton.setBounds(353, 444, 111, 43);
 		frame.getContentPane().add(btnNewButton);
 		
 		lblNewLabel = new JLabel("<\uC5C5\uCCB4 \uBAA9\uB85D>");
@@ -95,9 +101,32 @@ public class place_FestivalGUI2  {
 				place_FestivalGUI gui = new place_FestivalGUI();
 			}
 		});
-		button.setBounds(12, 435, 185, 52);
+		button.setBounds(12, 435, 133, 52);
 		frame.getContentPane().add(button);
-		}
-	
-
+		
+		tp_search = new JTextPane();
+		tp_search.setBounds(326, 41, 138, 21);
+		frame.getContentPane().add(tp_search);
+		
+		JButton btnNewButton_1 = new JButton("\uB354\uBCF4\uAE30");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = table.getSelectedRow();
+				int col = table.getSelectedColumn();
+				for(int i=0;i<table.getRowCount();i++) {
+					if(tp_search.getText().equals(data[i][2])) {
+					System.out.println(data[i][2]);
+					place_infoGUI info = new place_infoGUI();
+					}
+				}
+			}
+		});
+		btnNewButton_1.setBounds(181, 444, 116, 43);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		lblNewLabel_1 = new JLabel("\uAC80\uC0C9 \uD560 \uC5C5\uCCB4\uBA85");
+		lblNewLabel_1.setBounds(239, 47, 86, 15);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+	}
 }
