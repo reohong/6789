@@ -131,6 +131,11 @@ public class pfestivalGUI {
 		frame.getContentPane().add(button_6);
 		
 		JButton btnNewButton_3 = new JButton("\uB354 \uBCF4\uAE30");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				festivalInfoGUI festivalInfo = new festivalInfoGUI();
+			}
+		});
 		btnNewButton_3.setFont(new Font("HY¿±¼­M", Font.PLAIN, 14));
 		btnNewButton_3.setBounds(518, 285, 97, 23);
 		frame.getContentPane().add(btnNewButton_3);
