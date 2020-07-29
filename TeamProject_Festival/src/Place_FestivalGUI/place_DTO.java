@@ -6,6 +6,7 @@ public class place_DTO {
 	String gegu;
 	String name;
 	String address;
+	String test;
 	
 	public int getNum() {
 		return num;
