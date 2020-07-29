@@ -74,12 +74,33 @@ public class place_DAO {
 			e.printStackTrace();
 		} finally {
 			close();
-		} return memberList;
+		} return memberList;}
 	
-	
 		
-		
-		
+		public ArrayList<place_DTO> selectInfo(String name2) {
+			getConnect();
+			String sql = "select name,address,tel,homepage from place where name=?";
+			ArrayList<place_DTO> memberList2 = new ArrayList<place_DTO>();
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, name2);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+					String name = rs.getString(1);
+					String address = rs.getString(2);
+					String tel = rs.getString(3);
+					String homepage = rs.getString(4);
+					memberList2.add(new place_DTO(name, address,tel,homepage));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				close();
+			} 
+			
+			
+			return memberList2;
 	} 
 	
 	

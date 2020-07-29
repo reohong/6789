@@ -13,19 +13,24 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+
+import javax.swing.JTextPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableModel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JTextPane;
 
-public class place_FestivalGUI2  {
+public class place_FestivalGUI2  
+{
 
 	private JFrame frame;
 	private JTable table;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel;
 	private JButton button;
-	private JLabel lblNewLabel_1;
-	private JTextPane tp_search;
+	String model2;
 	
 	/**
 	 * Launch the application.
@@ -41,11 +46,14 @@ public class place_FestivalGUI2  {
 				}
 			}
 		});
-	} */
+	}  */
 
 	/**
 	 * Create the application.
 	 */
+	
+
+	
 	public place_FestivalGUI2(String gegu) {
 		initialize(gegu);
 		frame.setVisible(true);
@@ -57,17 +65,16 @@ public class place_FestivalGUI2  {
 	 */
 	private void initialize(String gegu) {
 		frame = new JFrame();
+		frame.setBounds(100, 100, 553, 556);
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 72, 476, 336);
+		scrollPane.setBounds(12, 63, 476, 336);
 		frame.getContentPane().add(scrollPane);
 		
 		String [] colName = {"번호", "지역구","업체명","업체주소"};
 		
 		place_DAO dao = new place_DAO();
-		place_FestivalGUI festgui = new place_FestivalGUI();
-		
 			ArrayList<place_DTO> memberList = dao.selectPlace(gegu);
 			Object [][] data = new Object[memberList.size()][4]; //2차원 배열 형성
 		for(int i=0; i<data.length;i++) {
@@ -78,8 +85,16 @@ public class place_FestivalGUI2  {
 			}
 		
 		table = new JTable(data,colName);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int index = table.getSelectedRow();
+				TableModel model = table.getModel();
+				 model2 = (String)table.getValueAt(index, 2);
+				 
+			}
+		});
 		scrollPane.setViewportView(table);
-		
 		
 		btnNewButton = new JButton("\uB2EB\uAE30");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -104,19 +119,13 @@ public class place_FestivalGUI2  {
 		button.setBounds(12, 435, 133, 52);
 		frame.getContentPane().add(button);
 		
-		tp_search = new JTextPane();
-		tp_search.setBounds(326, 41, 138, 21);
-		frame.getContentPane().add(tp_search);
-		
 		JButton btnNewButton_1 = new JButton("\uB354\uBCF4\uAE30");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int row = table.getSelectedRow();
-				int col = table.getSelectedColumn();
 				for(int i=0;i<table.getRowCount();i++) {
-					if(tp_search.getText().equals(data[i][2])) {
-					System.out.println(data[i][2]);
-					place_infoGUI info = new place_infoGUI();
+					if(model2.equals(data[i][2])) {
+						
+						place_infoGUI info = new place_infoGUI(model2);
 					}
 				}
 			}
@@ -124,9 +133,6 @@ public class place_FestivalGUI2  {
 		btnNewButton_1.setBounds(181, 444, 116, 43);
 		frame.getContentPane().add(btnNewButton_1);
 		
-		lblNewLabel_1 = new JLabel("\uAC80\uC0C9 \uD560 \uC5C5\uCCB4\uBA85");
-		lblNewLabel_1.setBounds(239, 47, 86, 15);
-		frame.getContentPane().add(lblNewLabel_1);
-		
 	}
+
 }
