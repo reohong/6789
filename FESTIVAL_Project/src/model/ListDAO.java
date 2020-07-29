@@ -89,24 +89,24 @@ public class ListDAO {
 		return FestivalList;}
 		
 		
-	public int Update_num(int n_num, String name) {
+	public int Update_num(int n, String name) {
 		
 		getConnect();
-		String sql = "upadte List_F set n_num =? where name =?";
+		String sql = "update List_F set n_num =? where name =?";
 		int cnt = 0;
-		
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1,n_num);
+			psmt.setInt(1,n);
 			psmt.setString(2, name);
-			
 			 cnt= psmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
-		}return cnt;
+		}
+		System.out.println(n);
+		return n;
 	
 		
 		

@@ -61,14 +61,14 @@ public class More_GUI {
 		frame.setBounds(100, 100, 501, 422);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		System.out.println(n+"More_GUI의 n 내가 실행하면되겠찌?");
 		JLabel Now_num = new JLabel("현재 인원은 "+n+"명 입니다!" );
 		Now_num.setHorizontalAlignment(SwingConstants.CENTER);
 		Now_num.setBounds(113, 255, 259, 29);
 		frame.getContentPane().add(Now_num);
 	
 		
-		sum = 0;
+		sum = n;
 		JButton btn_join = new JButton("\uCC38\uC5EC\uD558\uAE30");
 		btn_join.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -77,13 +77,12 @@ public class More_GUI {
 				
 				if(result == JOptionPane.YES_OPTION) {
 					sum = sum + 1;
-					Now_num.setText("현재 인원은 "+(sum+n)+"명 입니다!");
+					Now_num.setText("현재 인원은 "+(sum)+"명 입니다!");
 					
 				}else if(result == JOptionPane.NO_OPTION) {
-					sum = sum - 1;
-					Now_num.setText("현재 인원은 "+(sum+n)+"명 입니다!");
+					Now_num.setText("현재 인원은 "+(sum)+"명 입니다!");
+				}System.out.println(sum);
 				}
-			}
 		}); 
 		
 		
@@ -103,6 +102,10 @@ public class More_GUI {
 		btn_back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
+				ListDAO dao = new ListDAO();
+				dao.Update_num(sum, f);
+				List_GUI list_gui = new List_GUI();
+				
 			}
 		});
 		btn_back.setBounds(134, 333, 210, 23);

@@ -57,6 +57,7 @@ public class List_GUI {
 	 */
 	public List_GUI() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -113,16 +114,17 @@ public class List_GUI {
 				TableModel model = table.getModel();
 				String f = (String) model.getValueAt(index, 1);
 				int n = (int) model.getValueAt(index, 6);
+				System.out.println(n+"List gui¿« n");
 				More_GUI more = new More_GUI(f,n);
-				
+				frame.dispose();
 
 			}
 		});
 		scrollPane.setViewportView(table);
 	}
 	
-	public void JTableUpdate() {
-		ListDAO dao = new ListDAO();
-		
-	}
+//	public void JTableUpdate(int cnt) {
+//
+//		
+//	}
 }
