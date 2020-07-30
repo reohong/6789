@@ -39,6 +39,7 @@ public class MembershipGUI {
 	private JTextField tf_email;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	JButton btn_join;
+	JButton btn_id_overlap;
 
 	/**
 	 * Launch the application.
@@ -150,6 +151,32 @@ public class MembershipGUI {
 		lblNewLabel_2.setBounds(204, 319, 105, 18);
 		frame.getContentPane().add(lblNewLabel_2);
 		
+		// 중복확인 버튼
+		btn_id_overlap = new JButton("\uC911\uBCF5\uD655\uC778");
+		btn_id_overlap.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		btn_id_overlap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String id = tf_id.getText();
+				MembershipDAO dao = new MembershipDAO();
+				boolean result = dao.idoverlap(id);	
+				
+				System.out.println(result);
+				
+				if(result) {                       
+					JOptionPane.showMessageDialog(null, "이미 사용중인 ID입니다.", "중복확인", JOptionPane.ERROR_MESSAGE);
+					tf_id.setText(""); //중복시 id 지우기
+				}else {
+					JOptionPane.showMessageDialog(null, "사용가능한 ID입니다.", "중복확인", JOptionPane.PLAIN_MESSAGE);
+		          
+			System.out.println(1234);
+				}
+			}
+		});
+		btn_id_overlap.setBounds(220, 69, 89, 24);
+		frame.getContentPane().add(btn_id_overlap);
+		
+		
 		// 회원가입 버튼
 		btn_join = new JButton("\uD68C\uC6D0\uAC00\uC785");
 		btn_join.addActionListener(new ActionListener() {
@@ -214,5 +241,4 @@ public class MembershipGUI {
 		tf_email.setBounds(117, 223, 192, 24);
 		frame.getContentPane().add(tf_email);
 	}
-
 }

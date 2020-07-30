@@ -1,4 +1,5 @@
 package Model;
+
 import java.beans.Statement;
 import java.lang.Thread.State;
 import java.sql.Connection;
@@ -118,32 +119,54 @@ public class MembershipDAO {
 		}
 		
 		// ** 중복체크  **  gui에서 어찌 구현??
-		public void idoverlap(String id) {
-			
+		
+		public boolean idoverlap(String id) {
+			boolean result = false;
 			getConnect();
-			int cnt = 0;
-			psmt = null;
-			rs = null;
-		     String sql = " select * from membership where id = ?";
-		     
-		     try {
-					psmt = conn.prepareStatement(sql.toString());
-					psmt.setString(1, id); // 첫번째 ?에 id 변수값 지정
-				    rs = psmt.executeQuery(); // SQL 실행
-					
-				    if ( rs.next() == true ) { // 최초 첫번째 레코드로 이동
-						cnt = psmt.executeUpdate();
-				    }  else {
-						JOptionPane.showMessageDialog(null,  "사용 가능한 ID입니다.");
-				    }        
-		        }catch(Exception e){
-		            System.out.println(e.toString());
-		        }finally{
-		            close();
-		        }
-		       
-		     
-		    }
+			String sql = " select * from membership where id = ?";
+			try{
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					result = true;
+				}
+			}catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {rs.close();}catch(SQLException s) {}
+					try {psmt.close();}catch(SQLException s) {}
+					try {conn.close();}catch(SQLException s) {}
+				}
+			return result;
+		}
+}
+//		public void idoverlap(String id) {
+//			
+//			getConnect();
+//			int cnt = 0;
+//			psmt = null;
+//			rs = null;
+//		     String sql = " select * from membership where id = ?";
+//		     
+//		     try {
+//					psmt = conn.prepareStatement(sql.toString());
+//					psmt.setString(1, id); // 첫번째 ?에 id 변수값 지정
+//				    rs = psmt.executeQuery(); // SQL 실행
+//					
+//				    if ( rs.next() == true ) { // 최초 첫번째 레코드로 이동
+//						cnt = psmt.executeUpdate();
+//				    }  else {
+//						JOptionPane.showMessageDialog(null,  "사용 가능한 ID입니다.");
+//				    }        
+//		        }catch(Exception e){
+//		            System.out.println(e.toString());
+//		        }finally{
+//		            close();
+//		        }
+//		       
+//		     
+//		    }
 				    
 //			try {
 //				psmt = conn.prepareStatement(sql);
@@ -165,6 +188,6 @@ public class MembershipDAO {
 	
 
 	
-		}
+		
 		
 
