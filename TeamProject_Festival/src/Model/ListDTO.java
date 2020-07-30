@@ -1,6 +1,6 @@
 package Model;
 public class ListDTO {
-	private int ord;
+	
 	private String name;
 	private String day;
 	private String loc;
@@ -8,8 +8,8 @@ public class ListDTO {
 	private int num;
 	private int n_num;
 
-	public ListDTO(int ord, String name, String day, String loc, String theme, int num, int n_num) {
-		this.ord = ord;
+	public ListDTO(String name, String day, String loc, String theme, int num, int n_num) {
+		
 		this.name = name;
 		this.day = day;
 		this.loc = loc;
@@ -19,10 +19,7 @@ public class ListDTO {
 
 	}
 
-	public int getOrd() {
-		return ord;
-	}
-
+	
 	public String getName() {
 		return name;
 	}

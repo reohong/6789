@@ -68,16 +68,15 @@ public class ListDAO {
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				int ord = rs.getInt(1);
-				String name = rs.getString(2);
-				String day = rs.getString(3);
-				String loc = rs.getString(4);
-				String theme = rs.getString(5);
-				int num = rs.getInt(6);
-				int n_num = rs.getInt(7);
+				String name = rs.getString(1);
+				String day = rs.getString(2);
+				String loc = rs.getString(3);
+				String theme = rs.getString(4);
+				int num = rs.getInt(5);
+				int n_num = rs.getInt(6);
 
 				// DTO애 담아 ㅁArrayList에 다시담기
-				FestivalList.add(new ListDTO(ord, name, day, loc, theme, num, n_num));
+				FestivalList.add(new ListDTO(name, day, loc, theme, num, n_num));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
