@@ -1,10 +1,11 @@
 create table pfestival(
-num number, 
 ftitle varchar2(30),
 fdate varchar2(30),
 flocation varchar2(30),
 ftheme varchar2(30));
 
-insert into pfestival values(1, '회상제', '2020-08-10~2020-08-12', '광주 동구', '힐링');
+insert into pfestival values('회상제', '2020-08-10~2020-08-12', '광주 동구', '힐링');
 
 select * from pfestival;
+
+drop table pfestival
