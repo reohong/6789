@@ -1,5 +1,4 @@
-package Membership;
-
+package Model;
 public class MembershipDTO {
 	
 	// DTO : 데이터 전송(이동) 객체 , DB처리하는데 이용, 테이블의 한 레코드

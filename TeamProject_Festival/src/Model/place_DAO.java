@@ -1,4 +1,4 @@
-package Place_FestivalGUI;
+package Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

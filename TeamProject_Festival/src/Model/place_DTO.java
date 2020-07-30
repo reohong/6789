@@ -1,4 +1,4 @@
-package Place_FestivalGUI;
+package Model;
 
 public class place_DTO {
 

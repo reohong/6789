@@ -1,4 +1,4 @@
-package Place_FestivalGUI;
+package View;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -18,6 +18,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableModel;
+
+import Model.place_DAO;
+import Model.place_DTO;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

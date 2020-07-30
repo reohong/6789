@@ -1,5 +1,4 @@
-package Membership;
-
+package Model;
 import java.beans.Statement;
 import java.lang.Thread.State;
 import java.sql.Connection;

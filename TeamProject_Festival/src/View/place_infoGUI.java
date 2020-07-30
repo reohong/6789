@@ -1,4 +1,4 @@
-package Place_FestivalGUI;
+package View;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import Model.place_DAO;
+import Model.place_DTO;
+
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;

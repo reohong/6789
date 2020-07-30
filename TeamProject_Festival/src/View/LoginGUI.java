@@ -1,4 +1,4 @@
-package view;
+package View;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -11,12 +11,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Membership.MembershipDAO;
-import Membership.MembershipDTO;
-import javax.swing.JPanel;
+import Model.MembershipDAO;
+import Model.MembershipDTO;
 
 public class LoginGUI {
 
@@ -36,7 +36,7 @@ public class LoginGUI {
 			public void run() {
 				try {
 					LoginGUI window = new LoginGUI();
-					// window.frame.setVisible(true);
+					 window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -98,6 +98,7 @@ public class LoginGUI {
 				}else { // 로그인 성공시
 					JOptionPane.showMessageDialog(null, "환영합니다^^", "로그인", JOptionPane.PLAIN_MESSAGE);
 					frame.dispose();
+					mainGUI mn = new mainGUI();
 					
 				}
 				

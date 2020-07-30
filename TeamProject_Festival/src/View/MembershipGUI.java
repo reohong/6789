@@ -1,16 +1,14 @@
-package view;
+package View;
 
 
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -22,12 +20,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import org.omg.CORBA.Request;
-
-import Membership.MembershipDAO;
-import Membership.MembershipDTO;
-// import Membership.MembershipGUI;
-import oracle.net.nt.ConnStrategy;
+import Model.MembershipDAO;
+import Model.MembershipDTO;
 
 
 

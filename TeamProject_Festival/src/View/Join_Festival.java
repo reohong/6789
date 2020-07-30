@@ -1,8 +1,13 @@
+package View;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import Model.Festival_DAO;
+
 import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
@@ -37,37 +42,36 @@ public class Join_Festival {
 	JRadioButton btn_Who_2;
 	JRadioButton btn_Who_3;
 	JRadioButton btn_Who_4;
-	
-	
-	
+
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
-	JRadioButton [] arr = new JRadioButton[6];
-	JRadioButton [] arr2 = new JRadioButton[6];
-	JRadioButton [] arr3 = new JRadioButton[5];
+	JRadioButton[] arr = new JRadioButton[6];
+	JRadioButton[] arr2 = new JRadioButton[6];
+	JRadioButton[] arr3 = new JRadioButton[5];
 	Festival_DAO dao = new Festival_DAO();
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Join_Festival window = new Join_Festival();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Join_Festival window = new Join_Festival();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
 	public Join_Festival() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -274,5 +278,11 @@ public class Join_Festival {
 		});
 		btnNewButton.setBounds(99, 590, 235, 47);
 		frame.getContentPane().add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				mainGUI mn = new mainGUI();
+			}
+		});
 	}
 }
