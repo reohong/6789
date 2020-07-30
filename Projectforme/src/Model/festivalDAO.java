@@ -54,12 +54,11 @@ public class festivalDAO {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				int num = rs.getInt(1);
-				String ftitle = rs.getString(2);
-				String fdate = rs.getString(3);
-				String flocation = rs.getString(4);
-				String ftheme = rs.getString(5);
-				memberList.add(new festivalDTO(num, ftitle, fdate, flocation, ftheme));
+				String ftitle = rs.getString(1);
+				String fdate = rs.getString(2);
+				String flocation = rs.getString(3);
+				String ftheme = rs.getString(4);
+				memberList.add(new festivalDTO(ftitle, fdate, flocation, ftheme));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

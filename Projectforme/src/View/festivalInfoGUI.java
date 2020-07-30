@@ -61,16 +61,18 @@ public class festivalInfoGUI {
 		scrollPane.setBounds(27, 61, 554, 256);
 		frame.getContentPane().add(scrollPane);
 		
-		String[] colName = {"NUM", "FTITLE", "FDATE", "FLOCATION", "FTHEME"};
+		String[] colName = {"번호", "축제명", "날짜", "장소", "테마"};
 		festivalDAO dao = new festivalDAO();
 		ArrayList<festivalDTO> memberList = dao.festivalSelect();
 		Object[][] data = new Object[memberList.size()][5];
+		int num=1;
 		for(int i = 0; i < data.length; i++) {
-			data[i][0] = memberList.get(i).getNum();
+			data[i][0] = num;
 			data[i][1] = memberList.get(i).getFtitle();
 			data[i][2] = memberList.get(i).getFdate();
 			data[i][3] = memberList.get(i).getFlocation();
 			data[i][4] = memberList.get(i).getFtheme();
+			num++;
 		}
 		
 		
