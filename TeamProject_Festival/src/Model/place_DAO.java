@@ -63,11 +63,11 @@ public class place_DAO {
 			psmt.setString(1, where);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				int num= rs.getInt(1);
-				String gegu = rs.getString(2);
-				String name = rs.getString(3);
-				String address = rs.getString(4);
-				memberList.add(new place_DTO(num,gegu,name,address));
+				
+				String gegu = rs.getString(1);
+				String name = rs.getString(2);
+				String address = rs.getString(3);
+				memberList.add(new place_DTO(gegu,name,address));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -80,11 +80,13 @@ public class place_FestivalGUI2
 		place_DAO dao = new place_DAO();
 			ArrayList<place_DTO> memberList = dao.selectPlace(gegu);
 			Object [][] data = new Object[memberList.size()][4]; //2차원 배열 형성
-		for(int i=0; i<data.length;i++) {
-			data[i][0] = memberList.get(i).getNum();
+			int num = 1;
+			for(int i=0; i<data.length;i++) {
+			data[i][0] = num;
 			data[i][1] = memberList.get(i).getGegu();
 			data[i][2] = memberList.get(i).getName();
 			data[i][3] = memberList.get(i).getAddress();
+			num ++;
 			}
 		
 		table = new JTable(data,colName);

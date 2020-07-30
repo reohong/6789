@@ -2,7 +2,6 @@ package Model;
 
 public class place_DTO {
 
-	int num;
 	String gegu;
 	String name;
 	String address;
@@ -10,9 +9,6 @@ public class place_DTO {
 	String homepage;
 	
 	
-	public int getNum() {
-		return num;
-	}
 
 	public String getGegu() {
 		return gegu;
@@ -33,9 +29,8 @@ public class place_DTO {
 		return homepage;
 	}
 	
-	public place_DTO(int num, String gegu, String name, String address) {
+	public place_DTO( String gegu, String name, String address) {
 		super();
-		this.num = num;
 		this.gegu = gegu;
 		this.name = name;
 		this.address = address;
