@@ -24,11 +24,12 @@ public class More_GUI {
 	private List_GUI me;
 	private JTextField txt_info;
 	int sum;
+	int sum_money;
 
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
+	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
@@ -39,10 +40,11 @@ public class More_GUI {
 //				}
 //			}
 //		});
-//	}
+	}
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public More_GUI(String f,int n) {//(String name)
 		initialize(f, n);
@@ -65,7 +67,7 @@ public class More_GUI {
 		//System.out.println(n+"More_GUI의 n 내가 실행하면되겠찌?");
 		JLabel Now_num = new JLabel("현재 인원은 "+n+"명 입니다!" );
 		Now_num.setHorizontalAlignment(SwingConstants.CENTER);
-		Now_num.setBounds(113, 255, 259, 29);
+		Now_num.setBounds(61, 258, 169, 29);
 		frame.getContentPane().add(Now_num);
 	
 		
@@ -91,7 +93,30 @@ public class More_GUI {
 		btn_join.setBounds(51, 297, 97, 23);
 		frame.getContentPane().add(btn_join);
 		
+		JLabel Now_money = new JLabel("후원금액은 0원 입니다!");
+		Now_money.setHorizontalAlignment(SwingConstants.CENTER);
+		Now_money.setBounds(246, 258, 169, 29);
+		frame.getContentPane().add(Now_money);
+		
+		
 		JButton btn_support = new JButton("\uD6C4\uC6D0\uD558\uAE30");
+		btn_support.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String Support, result;
+				Support = JOptionPane.showInputDialog("후원 금액을 입력하시오 >>");
+				int money = Integer.parseInt(Support);
+				if (money > 0) {
+					result = "후원 감사드립니다 ♥";
+					JOptionPane.showMessageDialog(null,result);
+					sum_money +=money;
+					Now_money.setText("후원금액은 "+sum_money+"원 입니다!");
+				}else if(money<0){
+					result = "금액을 입력해 주세요!";
+					JOptionPane.showMessageDialog(null,result);
+				}
+				
+			}
+		});
 		btn_support.setBounds(190, 297, 97, 23);
 		frame.getContentPane().add(btn_support);
 		
