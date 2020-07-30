@@ -1,9 +1,13 @@
 package View;
 
 import java.awt.CardLayout;
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -69,6 +73,15 @@ public class place_FestivalGUI {
 		button_E.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				place_FestivalGUI2 place = new place_FestivalGUI2("동구");
+				/*try {
+					Desktop.getDesktop().browse(new URI("https://www.spacecloud.kr/search?q=%EA%B4%91%EC%A3%BC%20%EB%8F%99%EA%B5%AC"));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} */  //url불러오는 문장 1.문장 작성후 2.Desktop&URl import 먼저 하고 3.try~catch 문에 넣기
 				frame.dispose();
 			}
 		});

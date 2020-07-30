@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
+import java.awt.Desktop;
+
 import javax.swing.JTable;
 
 import javax.swing.JTabbedPane;
@@ -24,6 +26,9 @@ import Model.place_DTO;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class place_FestivalGUI2  
 {
@@ -127,8 +132,16 @@ public class place_FestivalGUI2
 			public void actionPerformed(ActionEvent e) {
 				for(int i=0;i<table.getRowCount();i++) {
 					if(model2.equals(data[i][2])) {
-						
 						place_infoGUI info = new place_infoGUI(model2);
+						try {
+							Desktop.getDesktop().browse(new URI("https://www.spacecloud.kr/space/15207"));
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (URISyntaxException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} 
 					}
 				}
 			}

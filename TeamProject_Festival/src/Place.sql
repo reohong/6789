@@ -14,6 +14,8 @@ insert into place values(1,'³²±¸','efe3','ee','010456777','wwww.efe65w.com');
 insert into place values(1,'ºÏ±¸','efe4','ee','010789777','wwww.efe56w.com');
 insert into place values(1,'µ¿±¸','efe5','ee','010222777','wwww.efeffe.com');
 insert into place values(1,'±¤»ê±¸','efe6','ee','010555777','wwww.e23efw.com');
+insert into place values(1,'µ¿±¸','·¹ÀÌµð¹÷½ºÆÄÆ¼·ë','ee','010555777','wwww.e23efw.com');
+insert into place values(1,'µ¿±¸','Áö»ê³«¿ø','12','01055455777','wwww.e23efw.com');
 
 
 select name,address,tel,homepage from place where name='efe1'
