@@ -15,17 +15,20 @@ public class mainGUI {
 
 	private JFrame frame;
 
+	
 	/**
+	 *
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+
+		public void run() {
 				try {
 				mainGUI window = new mainGUI();
-				window.frame.setVisible(true);
+					window.frame.setVisible(true);
 			} catch (Exception e) {
-					e.printStackTrace();
+				e.printStackTrace();
 				}
 			}
 		});

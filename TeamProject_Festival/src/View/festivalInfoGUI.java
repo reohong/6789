@@ -65,12 +65,14 @@ public class festivalInfoGUI {
 		festivalDAO dao = new festivalDAO();
 		ArrayList<festivalDTO> memberList = dao.festivalSelect();
 		Object[][] data = new Object[memberList.size()][5];
+		int num =1;
 		for(int i = 0; i < data.length; i++) {
-			data[i][0] = memberList.get(i).getNum();
+			data[i][0] = num;
 			data[i][1] = memberList.get(i).getFtitle();
 			data[i][2] = memberList.get(i).getFdate();
 			data[i][3] = memberList.get(i).getFlocation();
 			data[i][4] = memberList.get(i).getFtheme();
+			num++;
 		}
 		
 		

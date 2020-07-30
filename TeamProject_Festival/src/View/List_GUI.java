@@ -92,16 +92,16 @@ public class List_GUI {
 		ListDAO dao = new ListDAO();
 		ArrayList<ListDTO> FestivalList = dao.Festivalinfo();
 		Object[][] data = new Object[FestivalList.size()][7];
-		
+		int num=1;
 		for(int i=0;i<data.length;i++) {
-			data[i][0]=FestivalList.get(i).getOrd();
+			data[i][0]=num;
 			data[i][1]=FestivalList.get(i).getName();
 			data[i][2]=FestivalList.get(i).getDay();
 			data[i][3]=FestivalList.get(i).getLoc();
 			data[i][4]=FestivalList.get(i).getTheme();
 			data[i][5]=FestivalList.get(i).getNum();
 			data[i][6]=FestivalList.get(i).getN_num();
-			
+			num++;
 			
 		}
 		
