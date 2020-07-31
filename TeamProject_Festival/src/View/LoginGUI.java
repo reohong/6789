@@ -36,7 +36,7 @@ public class LoginGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginGUI window = new LoginGUI(null);
+					LoginGUI window = new LoginGUI();
 					 window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,15 +48,15 @@ public class LoginGUI {
 	/**
 	 * Create the application.
 	 */
-	public LoginGUI(MembershipDTO dto) {
-		initialize(dto);
+	public LoginGUI() {
+		initialize();
 		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(MembershipDTO dto) {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 345, 462);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +99,7 @@ public class LoginGUI {
 				}else { // 로그인 성공시
 					JOptionPane.showMessageDialog(null, "환영합니다^^", "로그인", JOptionPane.PLAIN_MESSAGE);
 					frame.dispose();
-					mainGUI mn = new mainGUI(dto);
+					mainGUI mn = new mainGUI();
 					
 				}
 				

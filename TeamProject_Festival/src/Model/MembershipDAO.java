@@ -140,7 +140,7 @@ public class MembershipDAO {
 				}
 			return result;
 		}
-
+}
 //		public void idoverlap(String id) {
 //			
 //			getConnect();
@@ -186,34 +186,7 @@ public class MembershipDAO {
 //			}finally {
 //				close();
 	
-		public MembershipDTO name(String id) {
-			
-			getConnect();
-			MembershipDTO dto =null;
-			String sql = "select id from membership where id=?";
-			try {
-				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, id);  
-				rs = psmt.executeQuery();  
-				while(rs.next()) {
-					String loginid = rs.getString(1);
-					String loginpw = rs.getString(2);
-					String pwCheck = rs.getString(3);
-					String sex = rs.getString(3);
-					String email = rs.getString(4);
-					String agegroup = rs.getString(5);
-					dto = new MembershipDTO(loginid, loginpw, pwCheck,sex, email, agegroup);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			
-			}finally {
-				close();
-			}
-			return dto;
-		}
-}
+
 	
 		
 		
