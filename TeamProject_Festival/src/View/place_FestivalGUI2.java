@@ -74,11 +74,11 @@ public class place_FestivalGUI2
 	 */
 	private void initialize(String gegu) {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 553, 556);
+		frame.setBounds(100, 100, 668, 354);
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 63, 476, 336);
+		scrollPane.setBounds(12, 46, 618, 202);
 		frame.getContentPane().add(scrollPane);
 		
 		String [] colName = {"번호", "지역구","업체명","업체주소"};
@@ -114,7 +114,7 @@ public class place_FestivalGUI2
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(353, 444, 111, 43);
+		btnNewButton.setBounds(519, 258, 111, 43);
 		frame.getContentPane().add(btnNewButton);
 		
 		lblNewLabel = new JLabel("<\uC5C5\uCCB4 \uBAA9\uB85D>");
@@ -129,7 +129,7 @@ public class place_FestivalGUI2
 				
 			}
 		});
-		button.setBounds(12, 435, 133, 52);
+		button.setBounds(12, 258, 133, 47);
 		frame.getContentPane().add(button);
 		
 		JButton btnNewButton_1 = new JButton("\uB354\uBCF4\uAE30");
@@ -142,7 +142,7 @@ public class place_FestivalGUI2
 				}
 			}
 		});
-		btnNewButton_1.setBounds(181, 444, 116, 43);
+		btnNewButton_1.setBounds(263, 258, 116, 47);
 		frame.getContentPane().add(btnNewButton_1);
 		
 	}
