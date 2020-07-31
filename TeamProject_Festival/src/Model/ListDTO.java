@@ -7,8 +7,10 @@ public class ListDTO {
 	private String theme;
 	private int num;
 	private int n_num;
+	private String reply;
+	private int money;
 
-	public ListDTO(String name, String day, String loc, String theme, int num, int n_num) {
+	public ListDTO(String name, String day, String loc, String theme,int num, int n_num,int money) {
 		
 		this.name = name;
 		this.day = day;
@@ -16,8 +18,14 @@ public class ListDTO {
 		this.theme = theme;
 		this.num = num;
 		this.n_num = n_num;
-
+		this.money = money;
+		
 	}
+	
+	public ListDTO(String reply) {
+		this.reply = reply;
+	}
+	
 
 	
 	public String getName() {
@@ -42,6 +50,12 @@ public class ListDTO {
 
 	public int getN_num() {
 		return n_num;
+	}
+	public String getReply() {
+		return reply;
+	}
+	public int getMoney() {
+		return money;
 	}
 
 }

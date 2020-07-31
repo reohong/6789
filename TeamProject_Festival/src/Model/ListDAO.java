@@ -60,11 +60,12 @@ public class ListDAO {
 	}
 
 	public ArrayList<ListDTO> Festivalinfo() {
-		ArrayList<ListDTO> FestivalList = new ArrayList<ListDTO>();
 		getConnect();
-		String sql = "select * from List_F";
+		String sql = "select name,day,loc,theme,num,n_num,money from List_F";
+		ArrayList<ListDTO> FestivalList_1 = new ArrayList<ListDTO>();
 		try {
 			psmt = conn.prepareStatement(sql);
+			
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -74,9 +75,12 @@ public class ListDAO {
 				String theme = rs.getString(4);
 				int num = rs.getInt(5);
 				int n_num = rs.getInt(6);
+				int money = rs.getInt(7);
+				
+							
 
 				// DTO애 담아 ㅁArrayList에 다시담기
-				FestivalList.add(new ListDTO(name, day, loc, theme, num, n_num));
+				FestivalList_1.add(new ListDTO(name, day, loc, theme, num, n_num,money));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -84,13 +88,13 @@ public class ListDAO {
 		} finally {
 			close();
 		}
-		return FestivalList;
+		return FestivalList_1;
 	}
 
 	public int Update_num(int n, String name) {
 
 		getConnect();
-		String sql = "update List_F set n_num =? where name =?";
+		String sql = "update List_F set  n_num =? where name =?";
 		int cnt = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -103,9 +107,27 @@ public class ListDAO {
 		} finally {
 			close();
 		}
-		System.out.println(n);
 		return n;
 
+	}
+	public int Update_money(int m,String name) {	
+		getConnect();
+		String sql = "update List_F set  money =? where name =?";
+		int cnt = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, m);
+			psmt.setString(2, name);
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		System.out.println(m);
+		return m;
+		
 	}
 
 }

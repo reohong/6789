@@ -4,7 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.Font;
+
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -43,11 +44,11 @@ public class More_GUI {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the application. 
 	 * @wbp.parser.entryPoint
 	 */
-	public More_GUI(String f,int n) {//(String name)
-		initialize(f, n);
+	public More_GUI(String f,int n,int m) {//(String name)
+		initialize(f, n, m);
 		//(name)
 		frame.setVisible(true);
 	}
@@ -59,7 +60,7 @@ public class More_GUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(String f,int n) {//(String name)
+	private void initialize(String f,int n,int m) {//(String name)
 		frame = new JFrame();
 		frame.setBounds(100, 100, 501, 422);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,12 +94,12 @@ public class More_GUI {
 		btn_join.setBounds(51, 297, 97, 23);
 		frame.getContentPane().add(btn_join);
 		
-		JLabel Now_money = new JLabel("후원금액은 0원 입니다!");
+		JLabel Now_money = new JLabel("후원금액은 " +m+"원 입니다!");
 		Now_money.setHorizontalAlignment(SwingConstants.CENTER);
 		Now_money.setBounds(246, 258, 169, 29);
 		frame.getContentPane().add(Now_money);
 		
-		
+		sum_money=m;
 		JButton btn_support = new JButton("\uD6C4\uC6D0\uD558\uAE30");
 		btn_support.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,7 +109,7 @@ public class More_GUI {
 				if (money > 0) {
 					result = "후원 감사드립니다 ♥";
 					JOptionPane.showMessageDialog(null,result);
-					sum_money +=money;
+					sum_money = sum_money+money;
 					Now_money.setText("후원금액은 "+sum_money+"원 입니다!");
 				}else if(money<0){
 					result = "금액을 입력해 주세요!";
@@ -121,6 +122,12 @@ public class More_GUI {
 		frame.getContentPane().add(btn_support);
 		
 		JButton btn_comment = new JButton("\uC758\uACAC\uB0A8\uAE30\uAE30");
+		btn_comment.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+		});
 		btn_comment.setBounds(328, 297, 97, 23);
 		frame.getContentPane().add(btn_comment);
 		
@@ -129,7 +136,8 @@ public class More_GUI {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				ListDAO dao = new ListDAO();
-				dao.Update_num(sum, f);
+				dao.Update_num(sum,f);
+				dao.Update_money(sum_money,f);
 				List_GUI list_gui = new List_GUI();
 				
 			}
@@ -156,4 +164,5 @@ public class More_GUI {
 		
 
 	}
+	
 }
