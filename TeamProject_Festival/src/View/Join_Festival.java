@@ -19,13 +19,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JDateChooser;
 
 public class Join_Festival {
 
 	private JFrame frame;
 	JTextPane tp_festName;
-	JTextPane tp_festDate;
 	JComboBox comboBox;
+	JDateChooser date_start;
+	JDateChooser date_last;
 	JRadioButton btn_Place_0;
 	JRadioButton btn_Place_1;
 	JRadioButton btn_Place_2;
@@ -76,6 +78,11 @@ public class Join_Festival {
 		frame.setVisible(true);
 	}
 
+	public static java.sql.Date convert(java.util.Date uDate){
+		java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+		return sDate;
+	} // util을 sql로 바꿔주는 메소드
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -92,12 +99,12 @@ public class Join_Festival {
 		
 		JLabel lblNewLabel_1 = new JLabel("\uCD95\uC81C\uBA85 : ");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(12, 60, 93, 30);
+		lblNewLabel_1.setBounds(6, 60, 93, 30);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel label = new JLabel("\uCD95\uC81C \uB0A0\uC9DC : ");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(12, 122, 93, 30);
+		label.setBounds(22, 122, 93, 21);
 		frame.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("\uC608\uC815 \uC7A5\uC18C : ");
@@ -121,12 +128,8 @@ public class Join_Festival {
 		frame.getContentPane().add(label_4);
 		
 		 tp_festName = new JTextPane();
-		tp_festName.setBounds(99, 60, 328, 21);
+		tp_festName.setBounds(105, 60, 328, 21);
 		frame.getContentPane().add(tp_festName);
-		
-		tp_festDate = new JTextPane();
-		tp_festDate.setBounds(99, 122, 328, 21);
-		frame.getContentPane().add(tp_festDate);
 		
 		JTextPane textPane_2 = new JTextPane();
 		textPane_2.setBounds(12, 428, 415, 139);
@@ -228,6 +231,16 @@ public class Join_Festival {
 		label_5.setBounds(12, 329, 93, 30);
 		frame.getContentPane().add(label_5);
 		
+		date_start = new JDateChooser();
+		date_start.setBounds(137, 122, 89, 21);
+		frame.getContentPane().add(date_start);
+		
+		
+		date_last = new JDateChooser();
+		date_last.setBounds(301, 122, 89, 21);
+		frame.getContentPane().add(date_last);
+		
+		
 		JButton btnNewButton = new JButton("\uB4F1\uB85D\uD558\uAE30");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -273,8 +286,12 @@ public class Join_Festival {
 						festTheme = arr3[i].getText();
 					}
 				}
+		
 				
-				listdao.joinFest(tp_festName.getText(), tp_festDate.getText(), festPlace, festTheme, festMinmember);
+				java.sql.Date sqlDate = convert(date_start.getDate()); // date_start 를 sql_date 형태로 바꿔주기 
+				java.sql.Date sqlDate2 = convert(date_last.getDate()); // 동일
+				
+				listdao.joinFest(tp_festName.getText(), sqlDate, sqlDate2, festPlace, festTheme, festMinmember);
 				//등록하기 누르면 예정중인 축제목록으로 넘겨주기
 				
 				frame.dispose();
@@ -282,6 +299,10 @@ public class Join_Festival {
 		});
 		btnNewButton.setBounds(99, 590, 235, 47);
 		frame.getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_2 = new JLabel("~");
+		lblNewLabel_2.setBounds(261, 125, 28, 15);
+		frame.getContentPane().add(lblNewLabel_2);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();

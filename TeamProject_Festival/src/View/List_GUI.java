@@ -88,20 +88,21 @@ public class List_GUI {
 		btnNewButton.setBounds(212, 261, 97, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		String[] colName = {"번호","축제명","예정날짜","예정장소","테마정보","정원","현재인원","총후원금액"};
+		String[] colName = {"번호","축제명","시작예정날짜","종료예정날짜","예정장소","테마정보","정원","현재인원","총후원금액"};
 		ListDAO dao = new ListDAO();
 		ArrayList<ListDTO> FestivalList_1 = dao.Festivalinfo();
-		Object[][] data = new Object[FestivalList_1.size()][8];
+		Object[][] data = new Object[FestivalList_1.size()][9];
 		int num2=1;
 		for(int i=0;i<data.length;i++) {
 			data[i][0]=num2;
 			data[i][1]=FestivalList_1.get(i).getName();
-			data[i][2]=FestivalList_1.get(i).getDay();
-			data[i][3]=FestivalList_1.get(i).getLoc();
-			data[i][4]=FestivalList_1.get(i).getTheme();
-			data[i][5]=FestivalList_1.get(i).getNum();
-			data[i][6]=FestivalList_1.get(i).getN_num();
-			data[i][7]=FestivalList_1.get(i).getMoney();
+			data[i][2]=FestivalList_1.get(i).getDay_start();
+			data[i][3]=FestivalList_1.get(i).getDay_last();
+			data[i][4]=FestivalList_1.get(i).getLoc();
+			data[i][5]=FestivalList_1.get(i).getTheme();
+			data[i][6]=FestivalList_1.get(i).getNum();
+			data[i][7]=FestivalList_1.get(i).getN_num();
+			data[i][8]=FestivalList_1.get(i).getMoney();
 			
 			num2++;
 			
