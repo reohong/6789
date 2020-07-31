@@ -15,6 +15,7 @@ import javax.swing.table.TableModel;
 
 import Model.ListDAO;
 import Model.ListDTO;
+import Model.MembershipDTO;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -55,15 +56,15 @@ public class List_GUI {
 	/**
 	 * Create the application.
 	 */
-	public List_GUI() {
-		initialize();
+	public List_GUI(MembershipDTO dto) {
+		initialize(dto);
 		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(MembershipDTO dto) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 531, 339);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,7 +123,7 @@ public class List_GUI {
 				int n = (int) model.getValueAt(index, 6);
 				int m = (int) model.getValueAt(index, 7);
 				//System.out.println(n+"List gui¿« n");
-				More_GUI more = new More_GUI(f,n,m);
+				More_GUI more = new More_GUI(f,n,m,dto);
 				frame.dispose();
 
 			}

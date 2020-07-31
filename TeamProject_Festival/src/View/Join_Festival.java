@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import Model.Festival_DAO;
+import Model.MembershipDTO;
 
 import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
@@ -69,15 +70,15 @@ public class Join_Festival {
 	/**
 	 * Create the application.
 	 */
-	public Join_Festival() {
-		initialize();
+	public Join_Festival(MembershipDTO dto) {
+		initialize(dto);
 		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(MembershipDTO dto) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 455, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -281,7 +282,7 @@ public class Join_Festival {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				mainGUI mn = new mainGUI();
+				mainGUI mn = new mainGUI(dto);
 			}
 		});
 	}

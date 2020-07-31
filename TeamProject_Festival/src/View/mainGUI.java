@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+import Model.MembershipDTO;
+
 public class mainGUI {
 
 	private JFrame frame;
@@ -20,32 +22,27 @@ public class mainGUI {
 	 *
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-
-		public void run() {
-				try {
-				mainGUI window = new mainGUI();
-					window.frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-				}
-			}
-		});
-	}
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() {
+	 * 
+	 * public void run() { try { mainGUI window = new mainGUI();
+	 * window.frame.setVisible(true); } catch (Exception e) { e.printStackTrace(); }
+	 * } }); }
+	 */
 
 	/**
 	 * Create the application.
 	 */
-	public mainGUI() {
-		initialize();
+	public mainGUI(MembershipDTO dto) {
+		initialize(dto);
 		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(MembershipDTO dto) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 643, 519);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,7 +84,7 @@ public class mainGUI {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Join_Festival jf = new Join_Festival();
+				Join_Festival jf = new Join_Festival(dto);
 			}
 		});
 		btnNewButton_1.setFont(new Font("HY¿±¼­M", Font.PLAIN, 18));
@@ -148,7 +145,7 @@ public class mainGUI {
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				List_GUI lg = new List_GUI();
+				List_GUI lg = new List_GUI(dto);
 			}
 		});
 		button_7.setFont(new Font("HY¿±¼­M", Font.PLAIN, 14));

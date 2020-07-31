@@ -17,6 +17,10 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import Model.ListDAO;
+import Model.MembershipDTO;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class More_GUI {
 
@@ -47,8 +51,8 @@ public class More_GUI {
 	 * Create the application. 
 	 * @wbp.parser.entryPoint
 	 */
-	public More_GUI(String f,int n,int m) {//(String name)
-		initialize(f, n, m);
+	public More_GUI(String f,int n,int m,MembershipDTO dto) {//(String name)
+		initialize(f, n, m,dto);
 		//(name)
 		frame.setVisible(true);
 	}
@@ -60,7 +64,7 @@ public class More_GUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(String f,int n,int m) {//(String name)
+	private void initialize(String f,int n,int m, MembershipDTO dto) {//(String name)
 		frame = new JFrame();
 		frame.setBounds(100, 100, 501, 422);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +75,7 @@ public class More_GUI {
 		Now_num.setBounds(61, 258, 169, 29);
 		frame.getContentPane().add(Now_num);
 	
-		
+		System.out.println(dto.getId()+"more_gui");
 		sum = n;
 		JButton btn_join = new JButton("\uCC38\uC5EC\uD558\uAE30");
 		btn_join.addActionListener(new ActionListener() {
@@ -122,6 +126,12 @@ public class More_GUI {
 		frame.getContentPane().add(btn_support);
 		
 		JButton btn_comment = new JButton("\uC758\uACAC\uB0A8\uAE30\uAE30");
+		btn_comment.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Reply_GUI reply_gui = new Reply_GUI(dto);
+			}
+		});
 		btn_comment.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
@@ -138,7 +148,7 @@ public class More_GUI {
 				ListDAO dao = new ListDAO();
 				dao.Update_num(sum,f);
 				dao.Update_money(sum_money,f);
-				List_GUI list_gui = new List_GUI();
+				List_GUI list_gui = new List_GUI(dto);
 				
 			}
 		});

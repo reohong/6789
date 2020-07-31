@@ -59,6 +59,9 @@ public class ListDAO {
 		}
 	}
 
+
+
+
 	public ArrayList<ListDTO> Festivalinfo() {
 		getConnect();
 		String sql = "select name,day,loc,theme,num,n_num,money from List_F";
@@ -129,5 +132,6 @@ public class ListDAO {
 		return m;
 		
 	}
+	
 
 }
