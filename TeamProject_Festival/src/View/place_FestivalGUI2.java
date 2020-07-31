@@ -39,6 +39,7 @@ public class place_FestivalGUI2
 	private JLabel lblNewLabel;
 	private JButton button;
 	String model2;
+
 	
 	/**
 	 * Launch the application.
@@ -101,6 +102,7 @@ public class place_FestivalGUI2
 				int index = table.getSelectedRow();
 				TableModel model = table.getModel();
 				 model2 = (String)table.getValueAt(index, 2);
+				
 				 
 			}
 		});
@@ -124,6 +126,7 @@ public class place_FestivalGUI2
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				place_FestivalGUI gui = new place_FestivalGUI();
+				
 			}
 		});
 		button.setBounds(12, 435, 133, 52);
@@ -135,15 +138,6 @@ public class place_FestivalGUI2
 				for(int i=0;i<table.getRowCount();i++) {
 					if(model2.equals(data[i][2])) {
 						place_infoGUI info = new place_infoGUI(model2);
-						try {
-							Desktop.getDesktop().browse(new URI("https://www.spacecloud.kr/space/15207"));
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (URISyntaxException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} 
 					}
 				}
 			}

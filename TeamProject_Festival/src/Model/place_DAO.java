@@ -56,7 +56,7 @@ public class place_DAO {
 	
 	public ArrayList<place_DTO> selectPlace(String where) {
 		getConnect();
-		String sql = "select num,gegu,name,address from place where gegu=?";
+		String sql = "select gegu,name,address from place where gegu=?";
 		ArrayList<place_DTO> memberList = new ArrayList<place_DTO>();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -98,8 +98,6 @@ public class place_DAO {
 			} finally {
 				close();
 			} 
-			
-			
 			return memberList2;
 	} 
 	

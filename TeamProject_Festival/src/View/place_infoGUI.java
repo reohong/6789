@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -14,6 +15,12 @@ import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.awt.event.ActionEvent;
 
 public class place_infoGUI {
 
@@ -74,19 +81,37 @@ public class place_infoGUI {
 			}
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(12, 217, 415, 250);
+		textArea.setBounds(12, 160, 415, 240);
 		frame.getContentPane().add(textArea);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uC5C5\uCCB4 \uC18C\uAC1C");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(12, 186, 86, 21);
+		lblNewLabel_1.setBounds(12, 129, 86, 21);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 67, 415, 96);
+		scrollPane.setBounds(12, 67, 415, 52);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable(data,colName);
 		scrollPane.setViewportView(table);
+		
+		JButton btn_reserve = new JButton("\uC608\uC57D\uD558\uAE30");
+		btn_reserve.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					Desktop.getDesktop().browse(new URI((String)data[0][3]));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btn_reserve.setBounds(67, 410, 304, 57);
+		frame.getContentPane().add(btn_reserve);
 	}
 }
