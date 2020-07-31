@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import Model.Festival_DAO;
+import Model.ListDAO;
 
 import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
@@ -50,6 +51,7 @@ public class Join_Festival {
 	JRadioButton[] arr2 = new JRadioButton[6];
 	JRadioButton[] arr3 = new JRadioButton[5];
 	Festival_DAO dao = new Festival_DAO();
+	ListDAO listdao = new ListDAO();
 	/**
 	 * Launch the application.
 	 */
@@ -192,7 +194,7 @@ public class Join_Festival {
 		
 		comboBox = new JComboBox();
 		comboBox.setMaximumRowCount(10);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"5\uBA85", "10\uBA85", "15\uBA85", "20\uBA85", "25\uBA85", "30\uBA85", "35\uBA85", "40\uBA85", "45\uBA85", "50\uBA85"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"5", "10", "15", "20", "25", "30", "35", "40", "45", "50"}));
 		comboBox.setBounds(99, 298, 276, 25);
 		frame.getContentPane().add(comboBox);
 		
@@ -257,8 +259,8 @@ public class Join_Festival {
 					}
 				}
 				//3. 최소인원
-				String festMinmember = "~"+comboBox.getSelectedItem();
-				
+				int festMinmember = Integer.parseInt((String)comboBox.getSelectedItem());
+				System.out.println(festMinmember);
 				//4. 대상자
 				String festWho = null;
 				arr3[0] = btn_Who_0;
@@ -272,7 +274,9 @@ public class Join_Festival {
 					}
 				}
 				
-				dao.joinFest(tp_festName.getText(), tp_festDate.getText(), festPlace, festTheme, festMinmember, festWho);
+				listdao.joinFest(tp_festName.getText(), tp_festDate.getText(), festPlace, festTheme, festMinmember);
+				//등록하기 누르면 예정중인 축제목록으로 넘겨주기
+				
 				frame.dispose();
 			}
 		});

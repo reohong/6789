@@ -76,9 +76,6 @@ public class ListDAO {
 				int num = rs.getInt(5);
 				int n_num = rs.getInt(6);
 				int money = rs.getInt(7);
-				
-							
-
 				// DTO애 담아 ㅁArrayList에 다시담기
 				FestivalList_1.add(new ListDTO(name, day, loc, theme, num, n_num,money));
 			}
@@ -91,6 +88,10 @@ public class ListDAO {
 		return FestivalList_1;
 	}
 
+	
+	
+	
+	
 	public int Update_num(int n, String name) {
 
 		getConnect();
@@ -129,5 +130,27 @@ public class ListDAO {
 		return m;
 		
 	}
-
+	
+	public int joinFest(String festName,String festDate,String festPlace,String festTheme,int festMinmember) {
+		int cnt =0;
+		getConnect();
+		String sql = "insert into List_F(name,day,loc,theme,num) values(?,?,?,?,?)";
+		try {
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, festName);
+			psmt.setString(2, festDate);
+			psmt.setString(3, festPlace);
+			psmt.setString(4, festTheme);
+			psmt.setInt(5, festMinmember);
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	
 }
